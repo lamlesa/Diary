@@ -35,8 +35,17 @@ namespace Diary
             command.Parameters.Add("@u_role", MySqlDbType.VarChar).Value = "Admin";
 
             adapter.SelectCommand = main_command;
-            adapter.Fill(data_table);
+            try 
+            {
+                adapter.Fill(data_table);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
             adapter.SelectCommand = command;
+            Student.Table = data_table;
 
             //лишние команды для того, чтобы проверить админ ли пользователь ...
             if(data_table.Rows.Count > 0)

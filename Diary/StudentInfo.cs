@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Diary
 {
@@ -7,6 +8,16 @@ namespace Diary
         public StudentInfo()
         {
             InitializeComponent();
+        }
+
+        private void RedactButtonClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Нет возможности редактирования.");
+        }
+
+        private void ViewInfoButtonClick(object sender, EventArgs e)
+        {
+            DataGrid.DataSource = Student.Table;
         }
     }
 }
