@@ -64,7 +64,6 @@ namespace Diary
             {
                 MessageBox.Show("Вас не удалось зарегистрировать.");
             }
-
             db.CloseConnection();
         }
     }
