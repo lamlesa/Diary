@@ -39,12 +39,6 @@ namespace Diary
             SubjectDataGrid.DataSource = table;
             
         }
-
-        private void ScheduleButtonClick(object sender, EventArgs e)
-        {
-
-        }
-
         private void ShowSchedule(object sender, EventArgs e)
         {
             var db = new DataBase();
