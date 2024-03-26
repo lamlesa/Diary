@@ -15,7 +15,7 @@ namespace Diary
 
         private void InfoButtonClick(object sender, EventArgs e)
         {
-            var form = new StudentInfo();
+            var form = new StudentInfoForm();
             form.Show();
         }
 

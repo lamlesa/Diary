@@ -41,6 +41,7 @@ namespace Diary
                 {
                     adapter.Fill(table);
                     Student.Table = table;
+                    Student.Login = user_login;
                 }
                 catch
                 {

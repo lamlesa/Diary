@@ -66,7 +66,7 @@
             "Физическая культура",
             "Программирование",
             "Основы правоведения"});
-            this.subjects_box.Location = new System.Drawing.Point(834, 285);
+            this.subjects_box.Location = new System.Drawing.Point(943, 63);
             this.subjects_box.Name = "subjects_box";
             this.subjects_box.Size = new System.Drawing.Size(160, 28);
             this.subjects_box.TabIndex = 1;
@@ -75,7 +75,7 @@
             // SubjectDataGrid
             // 
             this.SubjectDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SubjectDataGrid.Location = new System.Drawing.Point(726, 63);
+            this.SubjectDataGrid.Location = new System.Drawing.Point(930, 100);
             this.SubjectDataGrid.Name = "SubjectDataGrid";
             this.SubjectDataGrid.RowHeadersWidth = 62;
             this.SubjectDataGrid.RowTemplate.Height = 28;
@@ -84,7 +84,7 @@
             // 
             // info_subject_button
             // 
-            this.info_subject_button.Location = new System.Drawing.Point(248, 168);
+            this.info_subject_button.Location = new System.Drawing.Point(930, 272);
             this.info_subject_button.Name = "info_subject_button";
             this.info_subject_button.Size = new System.Drawing.Size(149, 45);
             this.info_subject_button.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             // schedule_button
             // 
-            this.schedule_button.Location = new System.Drawing.Point(248, 375);
+            this.schedule_button.Location = new System.Drawing.Point(512, 12);
             this.schedule_button.Name = "schedule_button";
             this.schedule_button.Size = new System.Drawing.Size(195, 51);
             this.schedule_button.TabIndex = 6;
@@ -105,11 +105,11 @@
             // ScheduleGrid
             // 
             this.ScheduleGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ScheduleGrid.Location = new System.Drawing.Point(248, 219);
+            this.ScheduleGrid.Location = new System.Drawing.Point(403, 100);
             this.ScheduleGrid.Name = "ScheduleGrid";
             this.ScheduleGrid.RowHeadersWidth = 62;
             this.ScheduleGrid.RowTemplate.Height = 28;
-            this.ScheduleGrid.Size = new System.Drawing.Size(240, 150);
+            this.ScheduleGrid.Size = new System.Drawing.Size(464, 324);
             this.ScheduleGrid.TabIndex = 8;
             // 
             // weekday_box
@@ -122,7 +122,7 @@
             "Четверг",
             "Пятница",
             "Суббота"});
-            this.weekday_box.Location = new System.Drawing.Point(752, 451);
+            this.weekday_box.Location = new System.Drawing.Point(403, 66);
             this.weekday_box.Name = "weekday_box";
             this.weekday_box.Size = new System.Drawing.Size(160, 28);
             this.weekday_box.TabIndex = 9;
@@ -131,7 +131,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(830, 365);
+            this.label1.Location = new System.Drawing.Point(939, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 20);
             this.label1.TabIndex = 10;
