@@ -14,7 +14,6 @@ namespace Diary
 
             db.OpenConnection();
 
-
             var command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @login", db.GetConnection());
             command.Parameters.Add("@login", MySqlDbType.VarChar).Value = Student.Login;
             var reader = command.ExecuteReader();
@@ -23,14 +22,15 @@ namespace Diary
                 id_textbox.Text = reader.GetInt32("ID").ToString();
                 name_textbox.Text = reader.GetString("Name");
                 surname_textbox.Text = reader.GetString("Surname");
-                group_textbox.Text = reader.GetString("Group");
                 login_textbox.Text = reader.GetString("Login");
                 pass_textbox.Text = reader.GetString("Password");
+                group_textbox.Text = reader.GetString("Group");
             }
             else
             {
-                MessageBox.Show("Нет данных.");
+                MessageBox.Show("Нет данных об этом пользователе.");
             }
+
             db.CloseConnection();
         }
 
@@ -41,7 +41,7 @@ namespace Diary
             {
                 try
                 {
-                    PictureBox.Image = new Bitmap(open_file_dialog.FileName);
+                    picture_box.Image = new Bitmap(open_file_dialog.FileName);
                 }
                 catch
                 {
@@ -50,16 +50,16 @@ namespace Diary
             }
         }
 
+        // если в конструктор формы передаём 1 - меняем логин, если 2 - пароль
         private void ChangeLoginButtonClick(object sender, EventArgs e)
         {
-
             var form = new ChangeInfoForm(1);
             form.Show();
             Hide();
         }
+
         private void ChangePassButtonClick(object sender, EventArgs e)
         {
-
             var form = new ChangeInfoForm(2);
             form.Show();
             Hide();

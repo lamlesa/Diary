@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeInfoForm));
             this.new_field = new System.Windows.Forms.TextBox();
             this.accept_button = new System.Windows.Forms.Button();
+            this.label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // new_field
@@ -53,11 +54,22 @@
             this.accept_button.UseVisualStyleBackColor = true;
             this.accept_button.Click += new System.EventHandler(this.AcceptButtonClick);
             // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label.Location = new System.Drawing.Point(6, 37);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(267, 21);
+            this.label.TabIndex = 2;
+            this.label.Text = "Введите изменённые данные :";
+            // 
             // ChangeInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 244);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.accept_button);
             this.Controls.Add(this.new_field);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -74,5 +86,6 @@
 
         private System.Windows.Forms.TextBox new_field;
         private System.Windows.Forms.Button accept_button;
+        private System.Windows.Forms.Label label;
     }
 }

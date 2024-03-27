@@ -7,11 +7,11 @@ namespace Diary
 {
     public partial class ChangeInfoForm : Form
     {
-        public byte n;
+        public byte which;
         public ChangeInfoForm(byte n)
         {
             InitializeComponent();
-            this.n = n;
+            which = n;
         }
 
         private void AcceptButtonClick(object sender, EventArgs e)
@@ -21,12 +21,11 @@ namespace Diary
             var table = new DataTable();
             var adapter = new MySqlDataAdapter();
             var command = new MySqlCommand();
-            if(n == 1)
+            if(which == 1)
             {
                 command = new MySqlCommand("UPDATE `users` SET `Login` = @u_log WHERE `users`.`Login` = @cur_log", db.GetConnection());
                 command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = text;
                 command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
-                
             }
             else
             {
@@ -36,48 +35,50 @@ namespace Diary
             }
             
             db.OpenConnection();
+
             if (command.ExecuteNonQuery() == 1)
             {
-                if (n == 1)
+                if (which == 1)
                 {
-                    var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_login", db.GetConnection());
-                    new_command.Parameters.Add("@u_login", MySqlDbType.VarChar).Value = text;
+                    var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log", db.GetConnection());
+                    new_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = text;
                     adapter.SelectCommand = new_command;
-                    Student.Login = text;
-
                 }
                 else
                 {
-                    var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_login AND `Password` = @u_pass", db.GetConnection());
+                    var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND `Password` = @u_pass", db.GetConnection());
                     new_command.Parameters.Add("@u_pass", MySqlDbType.VarChar).Value = text;
-                    new_command.Parameters.Add("@u_login", MySqlDbType.VarChar).Value = Student.Login;
+                    new_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
                     adapter.SelectCommand = new_command;
                 }
-                
 
                 try
                 {
                     adapter.Fill(table);
-                    MessageBox.Show("Информация успешно изменена.");
-                    var form = new StudentInfoForm();
-                    form.Show();
-                    Hide();
                 }
                 catch
                 {
                     MessageBox.Show("Данные введены неверно.");
                 }
 
-                
+                if (table.Rows.Count > 0)
+                {
+                    MessageBox.Show("Информация успешно изменена.");
+                    if (which == 1)
+                    {
+                        Student.Login = text;
+                    }
+                    var form = new StudentInfoForm();
+                    form.Show();
+                    Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Информацию не удалось изменить.");
+                }
 
+                db.CloseConnection();
             }
-            else
-            {
-                MessageBox.Show("не удалось .");
-            }
-
-         
-            db.CloseConnection();
         }
     }
 }
