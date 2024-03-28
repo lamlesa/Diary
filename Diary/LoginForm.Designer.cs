@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.login_button = new System.Windows.Forms.Button();
             this.little_panel = new System.Windows.Forms.Panel();
             this.label = new System.Windows.Forms.Label();
+            this.tool_tip = new System.Windows.Forms.ToolTip(this.components);
             this.panel.SuspendLayout();
             this.little_panel.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +82,7 @@
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(250, 50);
             this.password.TabIndex = 2;
+            this.tool_tip.SetToolTip(this.password, "Поле для пароля");
             // 
             // login
             // 
@@ -90,6 +93,7 @@
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(250, 50);
             this.login.TabIndex = 1;
+            this.tool_tip.SetToolTip(this.login, "Поле для логина");
             // 
             // label2
             // 
@@ -146,6 +150,14 @@
             this.label.Text = "Авторизация";
             this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tool_tip
+            // 
+            this.tool_tip.AutoPopDelay = 5000;
+            this.tool_tip.InitialDelay = 1000;
+            this.tool_tip.ReshowDelay = 500;
+            this.tool_tip.ShowAlways = true;
+            tool_tip.SetToolTip(this.register_button, "Нажмите, если ещё не зарегистрированы");
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -175,5 +187,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.ToolTip tool_tip;
     }
 }

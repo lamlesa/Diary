@@ -44,13 +44,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.schedule_label = new System.Windows.Forms.Label();
             this.card_panel = new System.Windows.Forms.Panel();
+            this.note_button = new System.Windows.Forms.Button();
+            this.sub_label = new System.Windows.Forms.Label();
             this.subject_combobox = new System.Windows.Forms.ComboBox();
             this.writenote_button = new System.Windows.Forms.Button();
             this.subjects_box = new System.Windows.Forms.ComboBox();
             this.note_textbox = new System.Windows.Forms.TextBox();
             this.panel = new System.Windows.Forms.Panel();
             this.note_label = new System.Windows.Forms.Label();
-            this.sub_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.subject_data_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedule_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picture_box)).BeginInit();
@@ -83,7 +84,7 @@
             this.subject_data_grid.Name = "subject_data_grid";
             this.subject_data_grid.RowHeadersWidth = 62;
             this.subject_data_grid.RowTemplate.Height = 28;
-            this.subject_data_grid.Size = new System.Drawing.Size(394, 113);
+            this.subject_data_grid.Size = new System.Drawing.Size(394, 97);
             this.subject_data_grid.TabIndex = 4;
             // 
             // info_subject_button
@@ -236,6 +237,7 @@
             // card_panel
             // 
             this.card_panel.BackColor = System.Drawing.Color.SteelBlue;
+            this.card_panel.Controls.Add(this.note_button);
             this.card_panel.Controls.Add(this.sub_label);
             this.card_panel.Controls.Add(this.subject_combobox);
             this.card_panel.Controls.Add(this.subject_data_grid);
@@ -246,14 +248,43 @@
             this.card_panel.Size = new System.Drawing.Size(666, 191);
             this.card_panel.TabIndex = 11;
             // 
+            // note_button
+            // 
+            this.note_button.Font = new System.Drawing.Font("Georgia", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.note_button.Location = new System.Drawing.Point(557, 136);
+            this.note_button.Name = "note_button";
+            this.note_button.Size = new System.Drawing.Size(93, 45);
+            this.note_button.TabIndex = 13;
+            this.note_button.Text = "Просмотр заметки";
+            this.note_button.UseVisualStyleBackColor = true;
+            this.note_button.Click += new System.EventHandler(this.NoteButtonClick);
+            // 
+            // sub_label
+            // 
+            this.sub_label.BackColor = System.Drawing.Color.LightBlue;
+            this.sub_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sub_label.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sub_label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.sub_label.Location = new System.Drawing.Point(269, 8);
+            this.sub_label.Name = "sub_label";
+            this.sub_label.Size = new System.Drawing.Size(394, 23);
+            this.sub_label.TabIndex = 12;
+            this.sub_label.Text = "Карточка занятия";
+            this.sub_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // subject_combobox
             // 
             this.subject_combobox.Font = new System.Drawing.Font("Georgia", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.subject_combobox.FormattingEnabled = true;
             this.subject_combobox.Items.AddRange(new object[] {
             "Матанализ",
+            "Английский",
+            "Алгебра и геометрия",
+            "История",
+            "Русский",
             "Программирование",
-            "Физическая культура"});
+            "Физическая культура",
+            "Правоведение"});
             this.subject_combobox.Location = new System.Drawing.Point(19, 90);
             this.subject_combobox.Name = "subject_combobox";
             this.subject_combobox.Size = new System.Drawing.Size(209, 26);
@@ -277,8 +308,13 @@
             this.subjects_box.FormattingEnabled = true;
             this.subjects_box.Items.AddRange(new object[] {
             "Матанализ",
+            "Английский",
+            "Алгебра и геометрия",
+            "История",
+            "Русский",
             "Программирование",
-            "Физическая культура"});
+            "Физическая культура",
+            "Правоведение"});
             this.subjects_box.Location = new System.Drawing.Point(12, 55);
             this.subjects_box.Name = "subjects_box";
             this.subjects_box.Size = new System.Drawing.Size(209, 26);
@@ -316,18 +352,6 @@
             this.note_label.Size = new System.Drawing.Size(383, 42);
             this.note_label.TabIndex = 13;
             this.note_label.Text = "В этом поле можно к выбранному предмету \r\nдобавить заметку.";
-            // 
-            // sub_label
-            // 
-            this.sub_label.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.sub_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sub_label.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sub_label.Location = new System.Drawing.Point(269, 8);
-            this.sub_label.Name = "sub_label";
-            this.sub_label.Size = new System.Drawing.Size(394, 23);
-            this.sub_label.TabIndex = 12;
-            this.sub_label.Text = "Карточка занятия";
-            this.sub_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StudentForm
             // 
@@ -387,6 +411,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label sub_label;
+        private System.Windows.Forms.Button note_button;
     }
 }
 

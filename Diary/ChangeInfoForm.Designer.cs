@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeInfoForm));
             this.new_field = new System.Windows.Forms.TextBox();
             this.accept_button = new System.Windows.Forms.Button();
             this.label = new System.Windows.Forms.Label();
+            this.tool_tip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // new_field
@@ -64,6 +66,13 @@
             this.label.TabIndex = 2;
             this.label.Text = "Введите изменённые данные :";
             // 
+            // tool_tip
+            // 
+            this.tool_tip.AutoPopDelay = 5000;
+            this.tool_tip.InitialDelay = 1000;
+            this.tool_tip.ReshowDelay = 500;
+            tool_tip.SetToolTip(this.new_field, "Поле для нового логина/пароля");
+            // 
             // ChangeInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -87,5 +96,6 @@
         private System.Windows.Forms.TextBox new_field;
         private System.Windows.Forms.Button accept_button;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.ToolTip tool_tip;
     }
 }
