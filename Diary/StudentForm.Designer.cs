@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentForm));
             this.info_button = new System.Windows.Forms.Button();
             this.subject_data_grid = new System.Windows.Forms.DataGridView();
@@ -79,6 +81,14 @@
             // subject_data_grid
             // 
             this.subject_data_grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Georgia", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.subject_data_grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.subject_data_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.subject_data_grid.Location = new System.Drawing.Point(269, 31);
             this.subject_data_grid.Name = "subject_data_grid";
@@ -112,12 +122,20 @@
             // schedule_grid
             // 
             this.schedule_grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Georgia", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.schedule_grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.schedule_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.schedule_grid.Location = new System.Drawing.Point(7, 312);
+            this.schedule_grid.Location = new System.Drawing.Point(7, 346);
             this.schedule_grid.Name = "schedule_grid";
             this.schedule_grid.RowHeadersWidth = 62;
             this.schedule_grid.RowTemplate.Height = 28;
-            this.schedule_grid.Size = new System.Drawing.Size(514, 324);
+            this.schedule_grid.Size = new System.Drawing.Size(514, 290);
             this.schedule_grid.TabIndex = 8;
             // 
             // weekday_box
@@ -208,7 +226,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(377, 211);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(296, 65);
+            this.pictureBox2.Size = new System.Drawing.Size(296, 94);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
@@ -218,7 +236,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(7, 211);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(360, 65);
+            this.pictureBox1.Size = new System.Drawing.Size(360, 94);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
@@ -227,7 +245,7 @@
             // 
             this.schedule_label.BackColor = System.Drawing.Color.SteelBlue;
             this.schedule_label.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.schedule_label.Location = new System.Drawing.Point(7, 287);
+            this.schedule_label.Location = new System.Drawing.Point(7, 321);
             this.schedule_label.Name = "schedule_label";
             this.schedule_label.Size = new System.Drawing.Size(514, 25);
             this.schedule_label.TabIndex = 10;

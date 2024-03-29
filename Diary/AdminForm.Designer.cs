@@ -28,186 +28,297 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
-            this.Adm_DGW = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label_zametki = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label_admin = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.Adm_DGW)).BeginInit();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.surname_textbox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.name_textbox = new System.Windows.Forms.TextBox();
+            this.group_label = new System.Windows.Forms.Label();
+            this.group_textbox = new System.Windows.Forms.TextBox();
+            this.student_label = new System.Windows.Forms.Label();
+            this.datagrid_students = new System.Windows.Forms.DataGridView();
+            this.selectedStudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selectedStudentSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creategroup_button = new System.Windows.Forms.Button();
+            this.edit_button = new System.Windows.Forms.Button();
+            this.addstudent_button = new System.Windows.Forms.Button();
+            this.deletestudent_button = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tool_tip = new System.Windows.Forms.ToolTip(this.components);
+            this.panel = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid_students)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Adm_DGW
+            // pictureBox1
             // 
-            this.Adm_DGW.BackgroundColor = System.Drawing.Color.Bisque;
-            this.Adm_DGW.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Adm_DGW.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.Adm_DGW.Location = new System.Drawing.Point(188, 107);
-            this.Adm_DGW.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Adm_DGW.Name = "Adm_DGW";
-            this.Adm_DGW.RowHeadersWidth = 51;
-            this.Adm_DGW.RowTemplate.Height = 24;
-            this.Adm_DGW.Size = new System.Drawing.Size(483, 315);
-            this.Adm_DGW.TabIndex = 0;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 13);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(255, 165);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
-            // Column1
+            // label1
             // 
-            this.Column1.HeaderText = "Дата";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(14, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(108, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Фамилия :";
             // 
-            // Column2
+            // surname_textbox
             // 
-            this.Column2.HeaderText = "Предмет";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
+            this.surname_textbox.Location = new System.Drawing.Point(18, 92);
+            this.surname_textbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.surname_textbox.Multiline = true;
+            this.surname_textbox.Name = "surname_textbox";
+            this.surname_textbox.Size = new System.Drawing.Size(190, 40);
+            this.surname_textbox.TabIndex = 14;
             // 
-            // Column3
+            // label2
             // 
-            this.Column3.HeaderText = "Группа";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(14, 141);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 24);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Имя :";
             // 
-            // label_zametki
+            // name_textbox
             // 
-            this.label_zametki.AutoSize = true;
-            this.label_zametki.Location = new System.Drawing.Point(694, 107);
-            this.label_zametki.Name = "label_zametki";
-            this.label_zametki.Size = new System.Drawing.Size(75, 20);
-            this.label_zametki.TabIndex = 2;
-            this.label_zametki.Text = "Заметки";
+            this.name_textbox.Location = new System.Drawing.Point(18, 169);
+            this.name_textbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.name_textbox.Multiline = true;
+            this.name_textbox.Name = "name_textbox";
+            this.name_textbox.Size = new System.Drawing.Size(190, 40);
+            this.name_textbox.TabIndex = 16;
             // 
-            // textBox1
+            // group_label
             // 
-            this.textBox1.Location = new System.Drawing.Point(677, 144);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(112, 26);
-            this.textBox1.TabIndex = 3;
+            this.group_label.AutoSize = true;
+            this.group_label.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.group_label.Location = new System.Drawing.Point(290, 27);
+            this.group_label.Name = "group_label";
+            this.group_label.Size = new System.Drawing.Size(128, 29);
+            this.group_label.TabIndex = 17;
+            this.group_label.Text = "Группа №";
             // 
-            // textBox2
+            // group_textbox
             // 
-            this.textBox2.Location = new System.Drawing.Point(677, 180);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(112, 26);
-            this.textBox2.TabIndex = 4;
+            this.group_textbox.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.group_textbox.Location = new System.Drawing.Point(424, 27);
+            this.group_textbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.group_textbox.Multiline = true;
+            this.group_textbox.Name = "group_textbox";
+            this.group_textbox.Size = new System.Drawing.Size(128, 29);
+            this.group_textbox.TabIndex = 18;
+            this.tool_tip.SetToolTip(this.group_textbox, "Поле для номера группы, информацию о которой вы хотите увидеть");
+            this.group_textbox.TextChanged += new System.EventHandler(this.textBoxGroupName_TextChanged);
             // 
-            // textBox3
+            // student_label
             // 
-            this.textBox3.Location = new System.Drawing.Point(677, 214);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(112, 26);
-            this.textBox3.TabIndex = 5;
+            this.student_label.AutoSize = true;
+            this.student_label.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.student_label.Location = new System.Drawing.Point(290, 64);
+            this.student_label.Name = "student_label";
+            this.student_label.Size = new System.Drawing.Size(224, 29);
+            this.student_label.TabIndex = 19;
+            this.student_label.Text = "Список студентов :";
             // 
-            // textBox4
+            // datagrid_students
             // 
-            this.textBox4.Location = new System.Drawing.Point(677, 250);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(112, 26);
-            this.textBox4.TabIndex = 6;
+            this.datagrid_students.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid_students.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.datagrid_students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagrid_students.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.selectedStudentName,
+            this.selectedStudentSurname});
+            this.datagrid_students.Location = new System.Drawing.Point(295, 112);
+            this.datagrid_students.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.datagrid_students.Name = "datagrid_students";
+            this.datagrid_students.RowHeadersWidth = 51;
+            this.datagrid_students.RowTemplate.Height = 24;
+            this.datagrid_students.Size = new System.Drawing.Size(570, 505);
+            this.datagrid_students.TabIndex = 20;
+            this.datagrid_students.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStudents_CellContentClick);
             // 
-            // textBox5
+            // selectedStudentName
             // 
-            this.textBox5.Location = new System.Drawing.Point(677, 284);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(112, 26);
-            this.textBox5.TabIndex = 7;
+            this.selectedStudentName.HeaderText = "Имя";
+            this.selectedStudentName.MinimumWidth = 6;
+            this.selectedStudentName.Name = "selectedStudentName";
+            this.selectedStudentName.Width = 125;
             // 
-            // textBox6
+            // selectedStudentSurname
             // 
-            this.textBox6.Location = new System.Drawing.Point(677, 323);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(112, 26);
-            this.textBox6.TabIndex = 8;
+            this.selectedStudentSurname.HeaderText = "Фамилия";
+            this.selectedStudentSurname.MinimumWidth = 6;
+            this.selectedStudentSurname.Name = "selectedStudentSurname";
+            this.selectedStudentSurname.Width = 125;
             // 
-            // textBox7
+            // creategroup_button
             // 
-            this.textBox7.Location = new System.Drawing.Point(677, 358);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(112, 26);
-            this.textBox7.TabIndex = 9;
+            this.creategroup_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.creategroup_button.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.creategroup_button.Location = new System.Drawing.Point(14, 15);
+            this.creategroup_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.creategroup_button.Name = "creategroup_button";
+            this.creategroup_button.Size = new System.Drawing.Size(165, 55);
+            this.creategroup_button.TabIndex = 21;
+            this.creategroup_button.Text = "Создать группу";
+            this.creategroup_button.UseVisualStyleBackColor = true;
+            this.creategroup_button.Click += new System.EventHandler(this.buttonCreateGroup_Click_Click);
             // 
-            // textBox8
+            // edit_button
             // 
-            this.textBox8.Location = new System.Drawing.Point(677, 393);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(112, 26);
-            this.textBox8.TabIndex = 10;
+            this.edit_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.edit_button.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.edit_button.Location = new System.Drawing.Point(14, 78);
+            this.edit_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.edit_button.Name = "edit_button";
+            this.edit_button.Size = new System.Drawing.Size(165, 55);
+            this.edit_button.TabIndex = 22;
+            this.edit_button.Text = "Редактировать";
+            this.edit_button.UseVisualStyleBackColor = true;
             // 
-            // label_admin
+            // addstudent_button
             // 
-            this.label_admin.AutoSize = true;
-            this.label_admin.Location = new System.Drawing.Point(25, 30);
-            this.label_admin.Name = "label_admin";
-            this.label_admin.Size = new System.Drawing.Size(60, 20);
-            this.label_admin.TabIndex = 11;
-            this.label_admin.Text = "Админ";
+            this.addstudent_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addstudent_button.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addstudent_button.Location = new System.Drawing.Point(14, 141);
+            this.addstudent_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addstudent_button.Name = "addstudent_button";
+            this.addstudent_button.Size = new System.Drawing.Size(165, 55);
+            this.addstudent_button.TabIndex = 23;
+            this.addstudent_button.Text = "Добавить студента";
+            this.addstudent_button.UseVisualStyleBackColor = true;
+            this.addstudent_button.Click += new System.EventHandler(this.button_AddStudent_Click);
+            // 
+            // deletestudent_button
+            // 
+            this.deletestudent_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deletestudent_button.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deletestudent_button.Location = new System.Drawing.Point(14, 204);
+            this.deletestudent_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.deletestudent_button.Name = "deletestudent_button";
+            this.deletestudent_button.Size = new System.Drawing.Size(165, 55);
+            this.deletestudent_button.TabIndex = 24;
+            this.deletestudent_button.Text = "Удалить студента";
+            this.deletestudent_button.UseVisualStyleBackColor = true;
+            this.deletestudent_button.Click += new System.EventHandler(this.buttonDeleteStudent_Click_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.group_textbox);
+            this.splitContainer1.Panel1.Controls.Add(this.student_label);
+            this.splitContainer1.Panel1.Controls.Add(this.group_label);
+            this.splitContainer1.Panel1.Controls.Add(this.datagrid_students);
+            this.splitContainer1.Panel1.Controls.Add(this.panel);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.splitContainer1.Panel2.Controls.Add(this.deletestudent_button);
+            this.splitContainer1.Panel2.Controls.Add(this.creategroup_button);
+            this.splitContainer1.Panel2.Controls.Add(this.addstudent_button);
+            this.splitContainer1.Panel2.Controls.Add(this.edit_button);
+            this.splitContainer1.Size = new System.Drawing.Size(1087, 624);
+            this.splitContainer1.SplitterDistance = 889;
+            this.splitContainer1.TabIndex = 25;
+            // 
+            // tool_tip
+            // 
+            this.tool_tip.AutoPopDelay = 5000;
+            this.tool_tip.InitialDelay = 1000;
+            this.tool_tip.IsBalloon = true;
+            this.tool_tip.ReshowDelay = 500;
+            this.tool_tip.ShowAlways = true;
+            // 
+            // panel
+            // 
+            this.panel.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel.Controls.Add(this.name_textbox);
+            this.panel.Controls.Add(this.label2);
+            this.panel.Controls.Add(this.label1);
+            this.panel.Controls.Add(this.surname_textbox);
+            this.panel.Location = new System.Drawing.Point(11, 204);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(255, 233);
+            this.panel.TabIndex = 21;
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 528);
-            this.Controls.Add(this.label_admin);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label_zametki);
-            this.Controls.Add(this.Adm_DGW);
+            this.BackColor = System.Drawing.Color.PowderBlue;
+            this.ClientSize = new System.Drawing.Size(1087, 624);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AdminForm";
             this.Text = "Электронный дневник (админ)";
-            ((System.ComponentModel.ISupportInitialize)(this.Adm_DGW)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagrid_students)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView Adm_DGW;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Label label_zametki;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.Label label_admin;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox surname_textbox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox name_textbox;
+        private System.Windows.Forms.Label group_label;
+        private System.Windows.Forms.TextBox group_textbox;
+        private System.Windows.Forms.Label student_label;
+        private System.Windows.Forms.DataGridView datagrid_students;
+        private System.Windows.Forms.Button creategroup_button;
+        private System.Windows.Forms.Button edit_button;
+        private System.Windows.Forms.Button addstudent_button;
+        private System.Windows.Forms.Button deletestudent_button;
+        private System.Windows.Forms.DataGridViewTextBoxColumn selectedStudentName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn selectedStudentSurname;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ToolTip tool_tip;
+        private System.Windows.Forms.Panel panel;
     }
 }
