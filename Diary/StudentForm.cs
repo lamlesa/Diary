@@ -2,8 +2,6 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-using System.Collections;
-using System.Runtime;
 
 namespace Diary
 {
@@ -17,7 +15,7 @@ namespace Diary
             db.OpenConnection();
 
             var command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @login", db.GetConnection());
-            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = Student.Login;
+            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = User.Login;
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -90,49 +88,49 @@ namespace Diary
                 case "Матанализ":
                     var m_command = new MySqlCommand("UPDATE `users` SET `Math_Info` = CONCAT(`Math_Info`,@note_text) WHERE `users`.`Login` = @cur_log", db.GetConnection());
                     m_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = " " + note_textbox.Text;
-                    m_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                    m_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = m_command;
                     break;
                 case "Программирование":
                     var p_command = new MySqlCommand("UPDATE `users` SET `Prog_Info` = CONCAT(`Prog_Info`,@note_text) WHERE `users`.`Login` = @cur_log", db.GetConnection());
                     p_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = " " + note_textbox.Text;
-                    p_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                    p_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = p_command;
                     break;
                 case "Физическая культура":
                     var f_command = new MySqlCommand("UPDATE `users` SET `Phys_Info` = CONCAT(`Phys_Info`,@note_text) WHERE `users`.`Login` = @cur_log", db.GetConnection());
                     f_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = " " + note_textbox.Text;
-                    f_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                    f_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = f_command;
                     break;
                 case "Английский":
                     var e_command = new MySqlCommand("UPDATE `users` SET `Eng_Info` = CONCAT(`Eng_Info`,@note_text) WHERE `users`.`Login` = @cur_log", db.GetConnection());
                     e_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = " " + note_textbox.Text;
-                    e_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                    e_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = e_command;
                     break;
                 case "Алгебра и геометрия":
                     var a_command = new MySqlCommand("UPDATE `users` SET `Alg_Info` = CONCAT(`Alg_Info`,@note_text) WHERE `users`.`Login` = @cur_log", db.GetConnection());
                     a_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = " " + note_textbox.Text;
-                    a_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                    a_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = a_command;
                     break;
                 case "История":
                     var h_command = new MySqlCommand("UPDATE `users` SET `His_Info` = CONCAT(`His_Info`,@note_text) WHERE `users`.`Login` = @cur_log", db.GetConnection());
                     h_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = " " + note_textbox.Text;
-                    h_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                    h_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = h_command;
                     break;
                 case "Русский":
                     var r_command = new MySqlCommand("UPDATE `users` SET `Rus_Info` = CONCAT(`Rus_Info`,@note_text) WHERE `users`.`Login` = @cur_log", db.GetConnection());
                     r_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = " " + note_textbox.Text;
-                    r_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                    r_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = r_command;
                     break;
                 case "Правоведение":
                     var l_command = new MySqlCommand("UPDATE `users` SET `Law_Info` = CONCAT(`Law_Info`,@note_text) WHERE `users`.`Login` = @cur_log", db.GetConnection());
                     l_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = " " + note_textbox.Text;
-                    l_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                    l_command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = l_command;
                     break;
             }
@@ -146,49 +144,49 @@ namespace Diary
                     case "Матанализ":
                         var nm_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Math_Info`, @note_text) > 0", db.GetConnection());
                         nm_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nm_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                        nm_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                         adapter.SelectCommand = nm_command;
                         break;
                     case "Программирование":
                         var np_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Prog_Info`, @note_text) > 0", db.GetConnection());
                         np_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        np_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                        np_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                         adapter.SelectCommand = np_command;
                         break;
                     case "Физическая культура":
                         var nf_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Phys_Info`, @note_text) > 0", db.GetConnection());
                         nf_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nf_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                        nf_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                         adapter.SelectCommand = nf_command;
                         break;
                     case "Английский":
                         var ne_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Eng_Info`, @note_text) > 0", db.GetConnection());
                         ne_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        ne_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                        ne_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                         adapter.SelectCommand = ne_command;
                         break;
                     case "Алгебра и геометрия":
                         var na_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Alg_Info`, @note_text) > 0", db.GetConnection());
                         na_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        na_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                        na_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                         adapter.SelectCommand = na_command;
                         break;
                     case "История":
                         var nh_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`His_Info`, @note_text) > 0", db.GetConnection());
                         nh_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nh_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                        nh_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                         adapter.SelectCommand = nh_command;
                         break;
                     case "Русский":
                         var nr_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Rus_Info`, @note_text) > 0", db.GetConnection());
                         nr_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nr_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                        nr_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                         adapter.SelectCommand = nr_command;
                         break;
                     case "Правоведение":
                         var nl_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Law_Info`, @note_text) > 0", db.GetConnection());
                         nl_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nl_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                        nl_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                         adapter.SelectCommand = nl_command;
                         break;
                 }

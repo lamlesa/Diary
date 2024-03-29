@@ -15,7 +15,7 @@ namespace Diary
             db.OpenConnection();
 
             var command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @login", db.GetConnection());
-            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = Student.Login;
+            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = User.Login;
             var reader = command.ExecuteReader();
             if (reader.Read())
             {

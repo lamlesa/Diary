@@ -43,8 +43,8 @@ namespace Diary
             }
 
             adapter.SelectCommand = command;
-            Student.Login = user_login;
-            Student.Table = data_table;
+            User.Login = user_login;
+            User.Table = data_table;
 
             // лишние команды для того, чтобы проверить админ ли пользователь
             if (data_table.Rows.Count > 0)

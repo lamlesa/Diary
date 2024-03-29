@@ -69,7 +69,7 @@
       <DependentUpon>CheckAdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="StudentForm.cs">
       <SubType>Form</SubType>
     </Compile>

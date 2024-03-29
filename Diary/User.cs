@@ -2,7 +2,7 @@
 
 namespace Diary
 {
-    public static class Student
+    public static class User
     {
         public static string Login { get; set; }
         public static DataTable Table { get; set; }    

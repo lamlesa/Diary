@@ -40,8 +40,8 @@ namespace Diary
                 try
                 {
                     adapter.Fill(table);
-                    Student.Table = table;
-                    Student.Login = user_login;
+                    User.Table = table;
+                    User.Login = user_login;
                 }
                 catch
                 {

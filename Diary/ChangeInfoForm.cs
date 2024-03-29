@@ -25,13 +25,13 @@ namespace Diary
             {
                 command = new MySqlCommand("UPDATE `users` SET `Login` = @u_log WHERE `users`.`Login` = @cur_log", db.GetConnection());
                 command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = text;
-                command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = Student.Login;
+                command.Parameters.Add("@cur_log", MySqlDbType.VarChar).Value = User.Login;
             }
             else
             {
                 command = new MySqlCommand("UPDATE `users` SET `Password` = @u_pass WHERE `users`.`Login` = @u_log", db.GetConnection());
                 command.Parameters.Add("@u_pass", MySqlDbType.VarChar).Value = text;
-                command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
             }
             
             db.OpenConnection();
@@ -48,7 +48,7 @@ namespace Diary
                 {
                     var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND `Password` = @u_pass", db.GetConnection());
                     new_command.Parameters.Add("@u_pass", MySqlDbType.VarChar).Value = text;
-                    new_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = Student.Login;
+                    new_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
                     adapter.SelectCommand = new_command;
                 }
 
@@ -66,7 +66,7 @@ namespace Diary
                     MessageBox.Show("Информация успешно изменена.");
                     if (which == 1)
                     {
-                        Student.Login = text;
+                        User.Login = text;
                     }
                     var form = new StudentInfoForm();
                     form.Show();

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace Diary
 {
@@ -7,6 +8,24 @@ namespace Diary
         public AdminForm()
         {
             InitializeComponent();
+            var db = new DataBase();
+
+            db.OpenConnection();
+
+            var command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @login", db.GetConnection());
+            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = User.Login;
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                name_textbox.Text = reader.GetString("Name");
+                surname_textbox.Text = reader.GetString("Surname");
+            }
+            else
+            {
+                MessageBox.Show("Нет данных об этом пользователе.");
+            }
+
+            db.CloseConnection();
         }
 
         private void textBoxGroupName_TextChanged(object sender, System.EventArgs e)
@@ -14,7 +33,7 @@ namespace Diary
             string groupName = group_textbox.Text;
         }
 
-        private void button_AddStudent_Click(object sender, System.EventArgs e)
+        private void AddStudentButtonClick(object sender, System.EventArgs e)
         {
             // Добавление нового студента в DataGridView
             datagrid_students.Rows.Add("Имя", "Фамилия", "Номер билета");
@@ -33,7 +52,7 @@ namespace Diary
             }
         }
 
-        private void buttonCreateGroup_Click_Click(object sender, System.EventArgs e)
+        private void CreateGroupButtonClick(object sender, System.EventArgs e)
         {
             // Получение названия группы из TextBox
             string groupName = group_textbox.Text;
@@ -51,9 +70,8 @@ namespace Diary
             }
         }
 
-        private void buttonDeleteStudent_Click_Click(object sender, System.EventArgs e)
+        private void DeleteStudentButtonClick(object sender, System.EventArgs e)
         {
-            // Удаление выбранного студента из DataGridView
             if (datagrid_students.SelectedRows.Count > 0)
             {
                 datagrid_students.Rows.Remove(datagrid_students.SelectedRows[0]);
