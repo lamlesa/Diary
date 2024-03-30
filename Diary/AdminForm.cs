@@ -17,8 +17,8 @@ namespace Diary
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
-                name_textbox.Text = reader.GetString("Name");
-                surname_textbox.Text = reader.GetString("Surname");
+                //name_textbox.Text = reader.GetString("Name");
+                //surname_textbox.Text = reader.GetString("Surname");
             }
             else
             {
@@ -28,34 +28,37 @@ namespace Diary
             db.CloseConnection();
         }
 
+
+
         private void textBoxGroupName_TextChanged(object sender, System.EventArgs e)
         {
-            string groupName = group_textbox.Text;
+            string groupName = textBoxGroupName.Text;
         }
 
-        private void AddStudentButtonClick(object sender, System.EventArgs e)
+        private void button_AddStudent_Click(object sender, System.EventArgs e)
         {
             // Добавление нового студента в DataGridView
-            datagrid_students.Rows.Add("Имя", "Фамилия", "Номер билета");
+            dataGridViewStudents.Rows.Add("Имя", "Фамилия", "Номер билета");
 
             // Дополнительная логика для сохранения информации о новом студенте
             // Например, можно добавить код для сохранения данных о студенте в базу данных
+
         }
 
         private void dataGridViewStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (datagrid_students.SelectedRows.Count > 0)
+            if (dataGridViewStudents.SelectedRows.Count > 0)
             {
-                DataGridViewRow selectedRow = datagrid_students.SelectedRows[0];
+                DataGridViewRow selectedRow = dataGridViewStudents.SelectedRows[0];
                 string selectedStudentName = selectedRow.Cells["Имя"].Value.ToString();
                 string selectedStudentSurname = selectedRow.Cells["Фамилия"].Value.ToString();
             }
         }
 
-        private void CreateGroupButtonClick(object sender, System.EventArgs e)
+        private void buttonCreateGroup_Click_Click(object sender, System.EventArgs e)
         {
             // Получение названия группы из TextBox
-            string groupName = group_textbox.Text;
+            string groupName = textBoxGroupName.Text;
 
             // Проверка наличия введенного названия группы
             if (!string.IsNullOrEmpty(groupName))
@@ -70,11 +73,17 @@ namespace Diary
             }
         }
 
-        private void DeleteStudentButtonClick(object sender, System.EventArgs e)
+        private void buttonEdit_Click_Click(object sender, System.EventArgs e)
         {
-            if (datagrid_students.SelectedRows.Count > 0)
+
+        }
+
+        private void buttonDeleteStudent_Click_Click(object sender, System.EventArgs e)
+        {
+            // Удаление выбранного студента из DataGridView
+            if (dataGridViewStudents.SelectedRows.Count > 0)
             {
-                datagrid_students.Rows.Remove(datagrid_students.SelectedRows[0]);
+                dataGridViewStudents.Rows.Remove(dataGridViewStudents.SelectedRows[0]);
                 // Дополнительная логика для удаления информации о студенте
                 // Например, можно добавить код для удаления данных о студенте из базы данных
             }
@@ -83,5 +92,25 @@ namespace Diary
                 MessageBox.Show("Выберите студента для удаления.");
             }
         }
+
+        private void AdminForm_Load(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void raspisanie_button_Click(object sender, System.EventArgs e)
+        {
+            this.Hide();
+            RaspisanieForm raspisanieForm = new RaspisanieForm();
+            raspisanieForm.Show();
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            this.Hide();
+            BallsForm ballsForm = new BallsForm();
+            ballsForm.Show();
+        }
+
     }
 }
