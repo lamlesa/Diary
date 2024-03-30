@@ -12,9 +12,6 @@ namespace Diary
         public ScheduleForm()
         {
             InitializeComponent();
-            // Создаем таблицу
-            
-       
 
             // Добавляем столбцы
             schedule.Columns.Add("Day", "День недели");
@@ -33,7 +30,7 @@ namespace Diary
                 new string[] { "Вторник", "8.30 - 10.00", "Фадеева Е.В.", "Программирование", "101" },
                 new string[] { "Вторник", "10.10 - 11.40", "Сидоров А.М.", "Мат. Анализ", "203" },
                 new string[] { "Вторник", "12.10 - 13.40", "Данилов В.А.", "Физкультура", "Зал СК" },
-                new string[] { "Вторни", "13.50 - 15.20", "Фадеева Е.В.", "Программирование", "101" },
+                new string[] { "Вторник", "13.50 - 15.20", "Фадеева Е.В.", "Программирование", "101" },
                 new string[] { "Среда", "8.30 - 10.00", "Фадеева Е.В.", "Программирование", "101" },
                 new string[] { "Среда", "10.10 - 11.40", "Сидоров А.М.", "Мат. Анализ", "203" },
                 new string[] { "Четверг", "12.10 - 13.40", "Данилов В.А.", "Физкультура", "Зал СК" },
@@ -41,7 +38,6 @@ namespace Diary
                 new string[] { "Пятница", "10.10 - 11.40", "Сидоров А.М.", "Мат. Анализ", "203" },
                 new string[] { "Пятница", "12.10 - 13.40", "Данилов В.А.", "Физкультура", "Зал СК" },
                 new string[] { "Пятница", "13.50 - 15.20", "Фадеева Е.В.", "Программирование", "101" }
-
             };
 
             foreach (string[] row in scheduleData)
@@ -51,32 +47,34 @@ namespace Diary
 
         }
 
-        void AddButton_Click(object sender, EventArgs e)
+        void Add(object sender, EventArgs e)
         {
-            // Добавление новой строки в DataGridView
-            schedule.Rows.Add(weekday.Text, timer.Value.ToLongTimeString(), professor.Text, name.Text, aud.Text);
-
+            
+            var Name = name.Text;
+            var Prof = professor.Text;
+            var Day = weekday.Text;
+            var Aud = aud.Text;
             var db = new DataBase();
             var table = new DataTable();
             var adapter = new MySqlDataAdapter();
-            var command = new MySqlCommand("INSERT INTO `subjects` (`Name`, `Professor`, `WeekDay`, `Time`, `Status`, `Aud`) VALUES (@u_name, @u_prof, @u_wday, @u_time, @u_status, @u_aud)", db.GetConnection());
-            command.Parameters.Add("@u_name", MySqlDbType.VarChar).Value = name.Text;
-            command.Parameters.Add("@u_prof", MySqlDbType.VarChar).Value = professor.Text;
-            command.Parameters.Add("@u_wday", MySqlDbType.VarChar).Value = weekday.Text;
-            command.Parameters.Add("@u_time", MySqlDbType.VarChar).Value = null;
+            var command = new MySqlCommand("INSERT INTO `subjects` (`Name`, `Professor`, `WeekDay`, `Time`, `Status`, `Aud`) VALUES (@u_name, @u_prof, @u_wday, NULL, @u_status, @u_aud);", db.GetConnection());
+            command.Parameters.Add("@u_name", MySqlDbType.VarChar).Value = Name;
+            command.Parameters.Add("@u_prof", MySqlDbType.VarChar).Value = Prof;
+            command.Parameters.Add("@u_wday", MySqlDbType.VarChar).Value = Day;
+            //command.Parameters.Add("@u_time", MySqlDbType.VarChar).Value = null;
             //command.Parameters.Add("@u_time", MySqlDbType.Time).Value = timer.Value.ToLongTimeString();
             command.Parameters.Add("@u_status", MySqlDbType.VarChar).Value = "None";
-            command.Parameters.Add("@u_aud", MySqlDbType.VarChar).Value = aud.Text;
+            command.Parameters.Add("@u_aud", MySqlDbType.VarChar).Value = Aud;
 
             db.OpenConnection();
             try
             {
                 if (command.ExecuteNonQuery() == 1)
                 {
-                    var new_command = new MySqlCommand("SELECT * FROM `subjects` WHERE `Name` = @u_name AND `Status` = @u_status AND `Aud` = @u_aud", db.GetConnection());
-                    new_command.Parameters.Add("@u_name", MySqlDbType.VarChar).Value = name.Text;
-                    new_command.Parameters.Add("@u_status", MySqlDbType.VarChar).Value = "None";
-                    new_command.Parameters.Add("@u_aud", MySqlDbType.VarChar).Value = aud.Text;
+                    var new_command = new MySqlCommand("SELECT * FROM `subjects` WHERE `Name` = @u_name", db.GetConnection());
+                    new_command.Parameters.Add("@u_name", MySqlDbType.VarChar).Value = Name;
+                    //new_command.Parameters.Add("@u_status", MySqlDbType.VarChar).Value = "None";
+                    //new_command.Parameters.Add("@u_aud", MySqlDbType.VarChar).Value = aud.Text;
                   
                     adapter.SelectCommand = new_command;
 
@@ -86,21 +84,23 @@ namespace Diary
                     }
                     catch
                     {
-                        MessageBox.Show("Данные введены неверно.");
+                        //MessageBox.Show("Данные введены неверно.");
                     }
                     
                 }
                 else
                 {
-                    MessageBox.Show("Не удалось добавить занятие.");
+                    //MessageBox.Show("Не удалось добавить занятие.");
                 }
             }
             catch
             {
-                MessageBox.Show("Не удалось добавить занятие.");
+                //MessageBox.Show("Не удалось добавить занятие.");
             }
 
             db.CloseConnection();
+            // Добавление новой строки в DataGridView
+            schedule.Rows.Add(weekday.Text, timer.Value.ToLongTimeString(), professor.Text, name.Text, aud.Text);
 
         }
 
@@ -124,7 +124,7 @@ namespace Diary
             // Удаление выбранной строки из DataGridView
             if (schedule.SelectedRows.Count > 0)
             {
-                schedule.Rows.Remove(schedule.SelectedRows[0]);
+                
                 if (schedule.SelectedRows.Count > 0)
                 {
                     var id = int.Parse(schedule.CurrentRow.Cells[0].Value.ToString());
@@ -166,6 +166,7 @@ namespace Diary
                     }
 
                     db.CloseConnection();
+                    schedule.Rows.Remove(schedule.SelectedRows[0]);
                 }
                 else
                 {
@@ -173,6 +174,5 @@ namespace Diary
                 }
             }
         }
-
     }
 }

@@ -53,11 +53,11 @@
             // timer
             // 
             this.timer.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timer.Location = new System.Drawing.Point(112, 93);
+            this.timer.Location = new System.Drawing.Point(196, 94);
             this.timer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.timer.Name = "timer";
             this.timer.ShowUpDown = true;
-            this.timer.Size = new System.Drawing.Size(120, 26);
+            this.timer.Size = new System.Drawing.Size(100, 26);
             this.timer.TabIndex = 1;
             this.timer.Value = new System.DateTime(2024, 3, 30, 20, 17, 0, 0);
             // 
@@ -65,23 +65,23 @@
             // 
             this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addButton.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addButton.Location = new System.Drawing.Point(160, 305);
+            this.addButton.Location = new System.Drawing.Point(160, 304);
             this.addButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(136, 58);
             this.addButton.TabIndex = 3;
             this.addButton.Text = "Добавить";
             this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.addButton.Click += new System.EventHandler(this.Add);
             // 
             // deleteButton
             // 
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.deleteButton.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteButton.Location = new System.Drawing.Point(798, 127);
+            this.deleteButton.Location = new System.Drawing.Point(829, 114);
             this.deleteButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(112, 29);
+            this.deleteButton.Size = new System.Drawing.Size(119, 29);
             this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@
             // 
             this.saveButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveButton.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveButton.Location = new System.Drawing.Point(798, 74);
+            this.saveButton.Location = new System.Drawing.Point(829, 77);
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(119, 29);
@@ -111,7 +111,7 @@
             "Четверг",
             "Пятница",
             "Суббота"});
-            this.weekday_box.Location = new System.Drawing.Point(791, 13);
+            this.weekday_box.Location = new System.Drawing.Point(798, 15);
             this.weekday_box.Name = "weekday_box";
             this.weekday_box.Size = new System.Drawing.Size(150, 29);
             this.weekday_box.TabIndex = 10;
@@ -132,7 +132,7 @@
             this.panel.Controls.Add(this.weekday);
             this.panel.Controls.Add(this.addButton);
             this.panel.Controls.Add(this.timer);
-            this.panel.Location = new System.Drawing.Point(782, 268);
+            this.panel.Location = new System.Drawing.Point(784, 255);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(306, 375);
             this.panel.TabIndex = 11;
@@ -140,45 +140,50 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 99);
+            this.label6.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(31, 98);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 20);
+            this.label6.Size = new System.Drawing.Size(64, 21);
             this.label6.TabIndex = 13;
-            this.label6.Text = "label6";
+            this.label6.Text = "Время";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 196);
+            this.label5.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(31, 193);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.Size = new System.Drawing.Size(101, 21);
             this.label5.TabIndex = 12;
-            this.label5.Text = "label5";
+            this.label5.Text = "Аудитория";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 164);
+            this.label4.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(31, 161);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.Size = new System.Drawing.Size(92, 21);
             this.label4.TabIndex = 11;
-            this.label4.Text = "label4";
+            this.label4.Text = "Название";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 132);
+            this.label3.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(31, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 20);
+            this.label3.Size = new System.Drawing.Size(138, 21);
             this.label3.TabIndex = 10;
-            this.label3.Text = "label3";
+            this.label3.Text = "Преподаватель";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 60);
+            this.label2.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(31, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 20);
+            this.label2.Size = new System.Drawing.Size(116, 21);
             this.label2.TabIndex = 9;
             this.label2.Text = "День недели";
             // 
@@ -194,28 +199,32 @@
             // 
             // aud
             // 
-            this.aud.Location = new System.Drawing.Point(112, 190);
+            this.aud.Location = new System.Drawing.Point(196, 190);
+            this.aud.Multiline = true;
             this.aud.Name = "aud";
             this.aud.Size = new System.Drawing.Size(100, 26);
             this.aud.TabIndex = 7;
             // 
             // name
             // 
-            this.name.Location = new System.Drawing.Point(112, 158);
+            this.name.Location = new System.Drawing.Point(196, 158);
+            this.name.Multiline = true;
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(100, 26);
             this.name.TabIndex = 6;
             // 
             // professor
             // 
-            this.professor.Location = new System.Drawing.Point(112, 126);
+            this.professor.Location = new System.Drawing.Point(196, 126);
+            this.professor.Multiline = true;
             this.professor.Name = "professor";
             this.professor.Size = new System.Drawing.Size(100, 26);
             this.professor.TabIndex = 5;
             // 
             // weekday
             // 
-            this.weekday.Location = new System.Drawing.Point(132, 57);
+            this.weekday.Location = new System.Drawing.Point(196, 63);
+            this.weekday.Multiline = true;
             this.weekday.Name = "weekday";
             this.weekday.Size = new System.Drawing.Size(100, 26);
             this.weekday.TabIndex = 4;
@@ -224,7 +233,7 @@
             // 
             this.schedule.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.schedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.schedule.Location = new System.Drawing.Point(13, 28);
+            this.schedule.Location = new System.Drawing.Point(13, 15);
             this.schedule.Name = "schedule";
             this.schedule.RowHeadersWidth = 62;
             this.schedule.RowTemplate.Height = 28;

@@ -27,7 +27,7 @@ namespace Diary
                 login_textbox.Text = reader.GetString("Login");
                 pass_textbox.Text = reader.GetString("Password");
                 group_textbox.Text = reader.GetString("Group");
-                picture_box.ImageLocation = reader.GetString("UPic");
+                //picture_box.ImageLocation = reader.GetString("UPic");
             }
             else
             {

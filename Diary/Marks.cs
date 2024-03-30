@@ -17,23 +17,23 @@ namespace Diary
 
         void ButtonSave_Click(object sender, EventArgs e)
         {
-            string fileName = "grades.txt";
+            var fileName = "grades.txt";
 
-            using (StreamWriter writer = new StreamWriter(fileName))
+            using (var writer = new StreamWriter(fileName))
             {
                 foreach (var grade in programmingScores)
                 {
                     writer.WriteLine(grade);
                 }
             }
-            using (StreamWriter writer = new StreamWriter(fileName))
+            using (var writer = new StreamWriter(fileName))
             {
                 foreach (var grade in mathScores)
                 {
                     writer.WriteLine(grade);
                 }
             }
-            using (StreamWriter writer = new StreamWriter(fileName))
+            using (var writer = new StreamWriter(fileName))
             {
                 foreach (var grade in physicalEducationScores)
                 {
