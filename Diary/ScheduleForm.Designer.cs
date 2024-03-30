@@ -38,6 +38,7 @@
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
+            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1_CellEndEdit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,12 +60,12 @@
             this.prepod,
             this.subject,
             this.Auditory});
-            this.dataGridView1_CellEndEdit.Location = new System.Drawing.Point(12, 31);
+            this.dataGridView1_CellEndEdit.Location = new System.Drawing.Point(12, 37);
             this.dataGridView1_CellEndEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1_CellEndEdit.Name = "dataGridView1_CellEndEdit";
             this.dataGridView1_CellEndEdit.RowHeadersWidth = 51;
             this.dataGridView1_CellEndEdit.RowTemplate.Height = 24;
-            this.dataGridView1_CellEndEdit.Size = new System.Drawing.Size(763, 516);
+            this.dataGridView1_CellEndEdit.Size = new System.Drawing.Size(763, 510);
             this.dataGridView1_CellEndEdit.TabIndex = 2;
             this.dataGridView1_CellEndEdit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellEndEdit_CellContentClick);
             // 
@@ -139,22 +140,33 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // RaspisanieForm
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(13, 13);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(98, 20);
+            this.label.TabIndex = 6;
+            this.label.Text = "Расписание";
+            // 
+            // ScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1038, 561);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.dataGridView1_CellEndEdit);
             this.Controls.Add(this.dateTimePicker1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "RaspisanieForm";
+            this.Name = "ScheduleForm";
             this.Text = "Расписание";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1_CellEndEdit)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -169,6 +181,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn prepod;
         private System.Windows.Forms.DataGridViewTextBoxColumn subject;
         private System.Windows.Forms.DataGridViewTextBoxColumn Auditory;
+        private System.Windows.Forms.Label label;
     }
 
 }
