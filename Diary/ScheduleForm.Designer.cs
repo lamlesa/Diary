@@ -46,6 +46,7 @@
             this.professor = new System.Windows.Forms.TextBox();
             this.weekday = new System.Windows.Forms.TextBox();
             this.schedule = new System.Windows.Forms.DataGridView();
+            this.button = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.schedule)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +92,7 @@
             // 
             this.saveButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveButton.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveButton.Location = new System.Drawing.Point(829, 77);
+            this.saveButton.Location = new System.Drawing.Point(829, 81);
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(119, 29);
@@ -240,12 +241,24 @@
             this.schedule.Size = new System.Drawing.Size(763, 615);
             this.schedule.TabIndex = 12;
             // 
+            // button
+            // 
+            this.button.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button.Location = new System.Drawing.Point(829, 47);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size(119, 29);
+            this.button.TabIndex = 13;
+            this.button.Text = "Посмотреть";
+            this.button.UseVisualStyleBackColor = true;
+            this.button.Click += new System.EventHandler(this.ShowButtonClick);
+            // 
             // ScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1098, 644);
+            this.Controls.Add(this.button);
             this.Controls.Add(this.schedule);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.weekday_box);
@@ -282,6 +295,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.DataGridView schedule;
+        private System.Windows.Forms.Button button;
     }
 
 }

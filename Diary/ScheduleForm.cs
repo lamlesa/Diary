@@ -12,39 +12,6 @@ namespace Diary
         public ScheduleForm()
         {
             InitializeComponent();
-
-            // Добавляем столбцы
-            schedule.Columns.Add("Day", "День недели");
-            schedule.Columns.Add("Time", "Время пар");
-            schedule.Columns.Add("Teacher", "Преподаватель");
-            schedule.Columns.Add("Subject", "Предмет");
-            schedule.Columns.Add("Classroom", "Аудитория");
-
-            // Добавляем данные в таблицу
-            List<string[]> scheduleData = new List<string[]>
-            {
-                new string[] { "Понедельник", "8.30 - 10.00", "Фадеева Е.В.", "Программирование", "101" },
-                new string[] { "Понедельник", "10.10 - 11.40", "Сидоров А.М.", "Мат. Анализ", "203" },
-                new string[] { "Понедельник", "12.10 - 13.40", "Данилов В.А.", "Физкультура", "Зал СК" },
-                new string[] { "Понедельник", "13.50 - 15.20", "Фадеева Е.В.", "Программирование", "101" },
-                new string[] { "Вторник", "8.30 - 10.00", "Фадеева Е.В.", "Программирование", "101" },
-                new string[] { "Вторник", "10.10 - 11.40", "Сидоров А.М.", "Мат. Анализ", "203" },
-                new string[] { "Вторник", "12.10 - 13.40", "Данилов В.А.", "Физкультура", "Зал СК" },
-                new string[] { "Вторник", "13.50 - 15.20", "Фадеева Е.В.", "Программирование", "101" },
-                new string[] { "Среда", "8.30 - 10.00", "Фадеева Е.В.", "Программирование", "101" },
-                new string[] { "Среда", "10.10 - 11.40", "Сидоров А.М.", "Мат. Анализ", "203" },
-                new string[] { "Четверг", "12.10 - 13.40", "Данилов В.А.", "Физкультура", "Зал СК" },
-                new string[] { "Четверг", "13.50 - 15.20", "Фадеева Е.В.", "Программирование", "101" },
-                new string[] { "Пятница", "10.10 - 11.40", "Сидоров А.М.", "Мат. Анализ", "203" },
-                new string[] { "Пятница", "12.10 - 13.40", "Данилов В.А.", "Физкультура", "Зал СК" },
-                new string[] { "Пятница", "13.50 - 15.20", "Фадеева Е.В.", "Программирование", "101" }
-            };
-
-            foreach (string[] row in scheduleData)
-            {
-                schedule.Rows.Add(row);
-            }
-
         }
 
         void Add(object sender, EventArgs e)
@@ -121,10 +88,11 @@ namespace Diary
 
         void DeleteButton_Click(object sender, EventArgs e)
         {
+
             // Удаление выбранной строки из DataGridView
             if (schedule.SelectedRows.Count > 0)
             {
-                
+                schedule.Rows.Remove(schedule.CurrentRow);
                 if (schedule.SelectedRows.Count > 0)
                 {
                     var id = int.Parse(schedule.CurrentRow.Cells[0].Value.ToString());
@@ -132,7 +100,7 @@ namespace Diary
                     var db = new DataBase();
                     var table = new DataTable();
                     var adapter = new MySqlDataAdapter();
-                    var command = new MySqlCommand("DELETE FROM users WHERE `subjects`.`ID` = @u_ID", db.GetConnection());
+                    var command = new MySqlCommand("DELETE FROM `subjects` WHERE `subjects`.`ID` = @u_ID", db.GetConnection());
                     command.Parameters.Add("@u_ID", MySqlDbType.Int32).Value = id;
 
                     db.OpenConnection();
@@ -141,13 +109,14 @@ namespace Diary
                     {
                         if (command.ExecuteNonQuery() == 1)
                         {
-                            var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `ID` = @u_ID", db.GetConnection());
+                            var new_command = new MySqlCommand("SELECT * FROM `subjects` WHERE `ID` = @u_ID", db.GetConnection());
                             new_command.Parameters.Add("@u_ID", MySqlDbType.Int32).Value = id;
                             adapter.SelectCommand = new_command;
 
                             try
                             {
                                 adapter.Fill(table);
+                                
                                 MessageBox.Show("Занятие успешно удалено.");
                             }
                             catch
@@ -162,17 +131,37 @@ namespace Diary
                     }
                     catch
                     {
-                        MessageBox.Show("Не удалось удалить занятие из расписания.");
+                        MessageBox.Show("Не удалось удалить занятие.");
                     }
 
                     db.CloseConnection();
-                    schedule.Rows.Remove(schedule.SelectedRows[0]);
+                   
                 }
                 else
                 {
                     MessageBox.Show("Выберите занятие для удаления.");
                 }
             }
+        }
+
+        private void ShowButtonClick(object sender, EventArgs e)
+        {
+            var db = new DataBase();
+            var table = new DataTable();
+            var adapter = new MySqlDataAdapter();
+            var command = new MySqlCommand("SELECT `ID`,`Name`,`Professor`,`Time` FROM `subjects` WHERE `WeekDay` = @weekday", db.GetConnection());
+            command.Parameters.Add("@weekday", MySqlDbType.VarChar).Value = (string)weekday_box.SelectedItem;
+            adapter.SelectCommand = command;
+
+            try
+            {
+                adapter.Fill(table);
+            }
+            catch
+            {
+                MessageBox.Show("Необходимо выбрать день из списка.");
+            }
+            schedule.DataSource = table;
         }
     }
 }
