@@ -1,7 +1,9 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Diary.Properties;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Diary
 {
@@ -30,13 +32,13 @@ namespace Diary
             db.CloseConnection();
         }
 
-        private void InfoButtonClick(object sender, EventArgs e)
+        void InfoButtonClick(object sender, EventArgs e)
         {
             var form = new StudentInfoForm();
             form.Show();
         }
 
-        private void SubjectsInfo(object sender, EventArgs e)
+        void SubjectsInfo(object sender, EventArgs e)
         {
             var db = new DataBase();
             var table = new DataTable();
@@ -57,7 +59,7 @@ namespace Diary
             subject_data_grid.DataSource = table;
         }
 
-        private void ShowSchedule(object sender, EventArgs e)
+        void ShowSchedule(object sender, EventArgs e)
         {
             var db = new DataBase();
             var table = new DataTable();
@@ -77,7 +79,7 @@ namespace Diary
             schedule_grid.DataSource = table;
         }
 
-        private void WriteNoteButtonClick(object sender, EventArgs e)
+        void WriteNoteButtonClick(object sender, EventArgs e)
         {
             var db = new DataBase();
             var table = new DataTable();
@@ -137,88 +139,103 @@ namespace Diary
 
             db.OpenConnection();
 
-            if (adapter.SelectCommand.ExecuteNonQuery() == 1)
+            try
             {
-                switch (subjects_box.SelectedItem)
-                {
-                    case "Матанализ":
-                        var nm_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Math_Info`, @note_text) > 0", db.GetConnection());
-                        nm_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nm_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
-                        adapter.SelectCommand = nm_command;
-                        break;
-                    case "Программирование":
-                        var np_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Prog_Info`, @note_text) > 0", db.GetConnection());
-                        np_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        np_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
-                        adapter.SelectCommand = np_command;
-                        break;
-                    case "Физическая культура":
-                        var nf_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Phys_Info`, @note_text) > 0", db.GetConnection());
-                        nf_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nf_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
-                        adapter.SelectCommand = nf_command;
-                        break;
-                    case "Английский":
-                        var ne_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Eng_Info`, @note_text) > 0", db.GetConnection());
-                        ne_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        ne_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
-                        adapter.SelectCommand = ne_command;
-                        break;
-                    case "Алгебра и геометрия":
-                        var na_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Alg_Info`, @note_text) > 0", db.GetConnection());
-                        na_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        na_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
-                        adapter.SelectCommand = na_command;
-                        break;
-                    case "История":
-                        var nh_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`His_Info`, @note_text) > 0", db.GetConnection());
-                        nh_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nh_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
-                        adapter.SelectCommand = nh_command;
-                        break;
-                    case "Русский":
-                        var nr_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Rus_Info`, @note_text) > 0", db.GetConnection());
-                        nr_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nr_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
-                        adapter.SelectCommand = nr_command;
-                        break;
-                    case "Правоведение":
-                        var nl_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Law_Info`, @note_text) > 0", db.GetConnection());
-                        nl_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
-                        nl_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
-                        adapter.SelectCommand = nl_command;
-                        break;
-                }
-
-                try
-                {
-                    adapter.Fill(table);
-                }
-                catch
+                if (adapter.SelectCommand == null)
                 {
                     MessageBox.Show("Данные введены неверно.");
                 }
-
-                if (table.Rows.Count > 0)
-                {
-                    MessageBox.Show("Заметка добавлена.");
-                    note_textbox.Clear();
-                }
                 else
                 {
-                    MessageBox.Show("Не удалось добавить заметку.");
-                }
+                    if (adapter.SelectCommand.ExecuteNonQuery() == 1)
+                    {
+                        switch (subjects_box.SelectedItem)
+                        {
+                            case "Матанализ":
+                                var nm_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Math_Info`, @note_text) > 0", db.GetConnection());
+                                nm_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
+                                nm_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                                adapter.SelectCommand = nm_command;
+                                break;
+                            case "Программирование":
+                                var np_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Prog_Info`, @note_text) > 0", db.GetConnection());
+                                np_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
+                                np_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                                adapter.SelectCommand = np_command;
+                                break;
+                            case "Физическая культура":
+                                var nf_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Phys_Info`, @note_text) > 0", db.GetConnection());
+                                nf_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
+                                nf_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                                adapter.SelectCommand = nf_command;
+                                break;
+                            case "Английский":
+                                var ne_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Eng_Info`, @note_text) > 0", db.GetConnection());
+                                ne_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
+                                ne_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                                adapter.SelectCommand = ne_command;
+                                break;
+                            case "Алгебра и геометрия":
+                                var na_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Alg_Info`, @note_text) > 0", db.GetConnection());
+                                na_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
+                                na_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                                adapter.SelectCommand = na_command;
+                                break;
+                            case "История":
+                                var nh_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`His_Info`, @note_text) > 0", db.GetConnection());
+                                nh_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
+                                nh_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                                adapter.SelectCommand = nh_command;
+                                break;
+                            case "Русский":
+                                var nr_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Rus_Info`, @note_text) > 0", db.GetConnection());
+                                nr_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
+                                nr_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                                adapter.SelectCommand = nr_command;
+                                break;
+                            case "Правоведение":
+                                var nl_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_log AND instr(`users`.`Law_Info`, @note_text) > 0", db.GetConnection());
+                                nl_command.Parameters.Add("@note_text", MySqlDbType.Text).Value = note_textbox.Text;
+                                nl_command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                                adapter.SelectCommand = nl_command;
+                                break;
+                        }
 
-                db.CloseConnection();
+                        try
+                        {
+                            adapter.Fill(table);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Данные введены неверно.");
+                        }
+
+                        if (table.Rows.Count > 0)
+                        {
+                            MessageBox.Show("Заметка добавлена.");
+                            note_textbox.Clear();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не удалось добавить заметку.");
+                        }
+
+                        db.CloseConnection();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные введены неверно.");
+                    }
+                }
             }
-            else
+            catch
             {
                 MessageBox.Show("Данные введены неверно.");
             }
+            
         }
 
-        private void NoteButtonClick(object sender, EventArgs e)
+        void NoteButtonClick(object sender, EventArgs e)
         {
             var form = new SubjectCardForm((string)subject_combobox.SelectedItem);
             form.Show();

@@ -1,28 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Diary
 {
-    public partial class BallsForm : Form
+    public partial class Marks : Form
     {
         // Создаем переменные для хранения оценок
-        int[] programmingScores = new int[3];
-        int[] mathScores = new int[3];
-        int[] physicalEducationScores = new int[3];
-        public BallsForm()
+        readonly int[] programmingScores = new int[3];
+        readonly int[] mathScores = new int[3];
+        readonly int[] physicalEducationScores = new int[3];
+        public Marks()
         {
             InitializeComponent();
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        void ButtonSave_Click(object sender, EventArgs e)
         {
             string fileName = "grades.txt";
 
@@ -47,11 +40,10 @@ namespace Diary
                     writer.WriteLine(grade);
                 }
             }
-
             MessageBox.Show("Оценки успешно сохранены в файле " + fileName);
         }
 
-        private void dgw_student_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        void Dgw_student_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Создание столбцов для DataGridView
             dgw_student.Columns.Add("Предмет", "Предмет");
@@ -63,14 +55,7 @@ namespace Diary
             dgw_student.Rows.Add("Физкультура");
         }
 
-
-
-        private void BallsForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        void BtnAdd_Click(object sender, EventArgs e)
         {
             // Получаем оценки из TextBox'ов
             programmingScores[0] = Convert.ToInt32(txtProgrammingHomework.Text);
@@ -89,5 +74,4 @@ namespace Diary
             physicalEducationScores[3] = Convert.ToInt32(txtPhysicalEducationExam.Text);
         }
     }
-
 }

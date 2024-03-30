@@ -5,6 +5,7 @@ namespace Diary
     public static class User
     {
         public static string Login { get; set; }
-        public static DataTable Table { get; set; }    
+        public static DataTable Table { get; set; }
+        public static string Role { get; set; }
     }
 }

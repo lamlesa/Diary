@@ -10,12 +10,13 @@ namespace Diary
             InitializeComponent();
         }
 
-        private void CheckButtonClick(object sender, EventArgs e)
+        void CheckButtonClick(object sender, EventArgs e)
         {
             // админом может зарегистрироваться только человек, знающий пароль
             if (password.Text == "KLEVO971")
             {
                 MessageBox.Show("Вы успешно зарегистрированы.");
+                User.Role = "Admin";
                 var form = new AdminForm();
                 form.Show();
                 Hide();

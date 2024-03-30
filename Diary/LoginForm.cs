@@ -13,7 +13,7 @@ namespace Diary
         }
 
         // сверяем введённые данные с бд
-        private void LoginButtonClick(object sender, EventArgs e)
+        void LoginButtonClick(object sender, EventArgs e)
         {
             var user_login = login.Text;
             var user_pass = password.Text;
@@ -54,6 +54,7 @@ namespace Diary
                 if (check_data_table.Rows.Count > 0)
                 {
                     var form = new AdminForm();
+                    User.Role = "Admin";
                     form.Show();
                     Hide();
                 }
@@ -70,7 +71,7 @@ namespace Diary
             }
         }
 
-        private void RegisterButtonClick(object sender, EventArgs e)
+        void RegisterButtonClick(object sender, EventArgs e)
         {
             var form = new RegistrationForm();
             form.Show();

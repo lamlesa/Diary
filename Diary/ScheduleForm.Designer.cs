@@ -1,6 +1,6 @@
 ﻿namespace Diary
 {
-    partial class RaspisanieForm
+    partial class ScheduleForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,9 +43,10 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(751, 25);
+            this.dateTimePicker1.Location = new System.Drawing.Point(802, 31);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(224, 26);
             this.dateTimePicker1.TabIndex = 1;
             // 
             // dataGridView1_CellEndEdit
@@ -58,13 +59,14 @@
             this.prepod,
             this.subject,
             this.Auditory});
-            this.dataGridView1_CellEndEdit.Location = new System.Drawing.Point(104, 83);
+            this.dataGridView1_CellEndEdit.Location = new System.Drawing.Point(12, 31);
+            this.dataGridView1_CellEndEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1_CellEndEdit.Name = "dataGridView1_CellEndEdit";
             this.dataGridView1_CellEndEdit.RowHeadersWidth = 51;
             this.dataGridView1_CellEndEdit.RowTemplate.Height = 24;
-            this.dataGridView1_CellEndEdit.Size = new System.Drawing.Size(678, 413);
+            this.dataGridView1_CellEndEdit.Size = new System.Drawing.Size(763, 516);
             this.dataGridView1_CellEndEdit.TabIndex = 2;
-            this.dataGridView1_CellEndEdit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit_CellContentClick);
+            this.dataGridView1_CellEndEdit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellEndEdit_CellContentClick);
             // 
             // Day
             // 
@@ -104,50 +106,53 @@
             // addButton
             // 
             this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addButton.Location = new System.Drawing.Point(104, 525);
+            this.addButton.Location = new System.Drawing.Point(814, 110);
+            this.addButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(95, 23);
+            this.addButton.Size = new System.Drawing.Size(107, 29);
             this.addButton.TabIndex = 3;
             this.addButton.Text = "Добавить";
             this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // deleteButton
             // 
             this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.deleteButton.Location = new System.Drawing.Point(315, 525);
+            this.deleteButton.Location = new System.Drawing.Point(805, 221);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(83, 23);
+            this.deleteButton.Size = new System.Drawing.Size(93, 29);
             this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // saveButton
             // 
             this.saveButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveButton.Location = new System.Drawing.Point(214, 525);
+            this.saveButton.Location = new System.Drawing.Point(805, 172);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(89, 23);
+            this.saveButton.Size = new System.Drawing.Size(100, 29);
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // RaspisanieForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(1006, 560);
+            this.ClientSize = new System.Drawing.Size(1038, 561);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.dataGridView1_CellEndEdit);
             this.Controls.Add(this.dateTimePicker1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RaspisanieForm";
-            this.Text = "Raspisanie";
-            this.Load += new System.EventHandler(this.Raspisanie_Load);
+            this.Text = "Расписание";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1_CellEndEdit)).EndInit();
             this.ResumeLayout(false);
 

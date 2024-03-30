@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Diary
 {
-    public partial class RaspisanieForm : Form
+    public partial class ScheduleForm : Form
     {
-        public RaspisanieForm()
+        public ScheduleForm()
         {
             InitializeComponent();
         }
 
-        private void dataGridView1_CellEndEdit_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        void DataGridView1_CellEndEdit_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Создаем таблицу
-            DataGridView scheduleGridView = new DataGridView();
+            var scheduleGridView = new DataGridView();
             scheduleGridView.Dock = DockStyle.Fill;
 
             // Добавляем столбцы
@@ -60,18 +55,13 @@ namespace Diary
             Controls.Add(scheduleGridView);
 
         }
-
-        private void Raspisanie_Load(object sender, EventArgs e)
-        {
-
-        }
-        private void addButton_Click(object sender, EventArgs e)
+        void AddButton_Click(object sender, EventArgs e)
         {
             // Добавление новой строки в DataGridView
             dataGridView1_CellEndEdit.Rows.Add("Новые данные 1", "Новые данные 2", "Новые данные 3");
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        void SaveButton_Click(object sender, EventArgs e)
         {
             // Сохранение данных из DataGridView в файл
             StringBuilder sb = new StringBuilder();
@@ -88,7 +78,7 @@ namespace Diary
 
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        void DeleteButton_Click(object sender, EventArgs e)
         {
             // Удаление выбранной строки из DataGridView
             if (dataGridView1_CellEndEdit.SelectedRows.Count > 0)

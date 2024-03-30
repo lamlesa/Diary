@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentInfoForm));
             this.label = new System.Windows.Forms.Label();
             this.picture_box = new System.Windows.Forms.PictureBox();
@@ -48,6 +49,7 @@
             this.pass_button = new System.Windows.Forms.Button();
             this.pass_textbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.tool_tip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picture_box)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,6 +106,7 @@
             this.id_textbox.Location = new System.Drawing.Point(436, 76);
             this.id_textbox.Multiline = true;
             this.id_textbox.Name = "id_textbox";
+            this.id_textbox.ReadOnly = true;
             this.id_textbox.Size = new System.Drawing.Size(200, 50);
             this.id_textbox.TabIndex = 6;
             // 
@@ -113,6 +116,7 @@
             this.name_textbox.Location = new System.Drawing.Point(436, 145);
             this.name_textbox.Multiline = true;
             this.name_textbox.Name = "name_textbox";
+            this.name_textbox.ReadOnly = true;
             this.name_textbox.Size = new System.Drawing.Size(200, 50);
             this.name_textbox.TabIndex = 7;
             // 
@@ -122,6 +126,7 @@
             this.surname_textbox.Location = new System.Drawing.Point(436, 214);
             this.surname_textbox.Multiline = true;
             this.surname_textbox.Name = "surname_textbox";
+            this.surname_textbox.ReadOnly = true;
             this.surname_textbox.Size = new System.Drawing.Size(200, 50);
             this.surname_textbox.TabIndex = 8;
             // 
@@ -131,6 +136,7 @@
             this.login_textbox.Location = new System.Drawing.Point(436, 283);
             this.login_textbox.Multiline = true;
             this.login_textbox.Name = "login_textbox";
+            this.login_textbox.ReadOnly = true;
             this.login_textbox.Size = new System.Drawing.Size(200, 50);
             this.login_textbox.TabIndex = 9;
             // 
@@ -140,6 +146,7 @@
             this.group_textbox.Location = new System.Drawing.Point(436, 421);
             this.group_textbox.Multiline = true;
             this.group_textbox.Name = "group_textbox";
+            this.group_textbox.ReadOnly = true;
             this.group_textbox.Size = new System.Drawing.Size(200, 50);
             this.group_textbox.TabIndex = 12;
             // 
@@ -220,6 +227,7 @@
             this.pass_textbox.Location = new System.Drawing.Point(436, 352);
             this.pass_textbox.Multiline = true;
             this.pass_textbox.Name = "pass_textbox";
+            this.pass_textbox.ReadOnly = true;
             this.pass_textbox.Size = new System.Drawing.Size(200, 50);
             this.pass_textbox.TabIndex = 23;
             // 
@@ -231,6 +239,19 @@
             this.label5.Size = new System.Drawing.Size(108, 27);
             this.label5.TabIndex = 24;
             this.label5.Text = "Пароль";
+            // 
+            // tool_tip
+            // 
+            this.tool_tip.AutomaticDelay = 100;
+            this.tool_tip.AutoPopDelay = 5000;
+            this.tool_tip.InitialDelay = 100;
+            this.tool_tip.ReshowDelay = 20;
+            tool_tip.SetToolTip(this.id_textbox, "ID нельзя изменить");
+            tool_tip.SetToolTip(this.surname_textbox, "Фамилию нельзя изменить");
+            tool_tip.SetToolTip(this.name_textbox, "Имя нельзя изменить");
+            tool_tip.SetToolTip(this.login_textbox, "Для изменения информации необходимо нажать соответствующую кнопку");
+            tool_tip.SetToolTip(this.pass_textbox, "Для изменения информации необходимо нажать соответствующую кнопку");
+            tool_tip.SetToolTip(this.group_textbox, "Группу нельзя изменить");
             // 
             // StudentInfoForm
             // 
@@ -287,5 +308,6 @@
         private System.Windows.Forms.Button pass_button;
         private System.Windows.Forms.TextBox pass_textbox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ToolTip tool_tip;
     }
 }

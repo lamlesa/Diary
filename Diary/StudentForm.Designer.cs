@@ -42,8 +42,6 @@
             this.surname_textbox = new System.Windows.Forms.TextBox();
             this.picture_box = new System.Windows.Forms.PictureBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.schedule_label = new System.Windows.Forms.Label();
             this.card_panel = new System.Windows.Forms.Panel();
             this.note_button = new System.Windows.Forms.Button();
@@ -61,8 +59,6 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.card_panel.SuspendLayout();
             this.panel.SuspendLayout();
             this.SuspendLayout();
@@ -111,7 +107,7 @@
             // schedule_button
             // 
             this.schedule_button.Font = new System.Drawing.Font("Georgia", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.schedule_button.Location = new System.Drawing.Point(528, 542);
+            this.schedule_button.Location = new System.Drawing.Point(528, 387);
             this.schedule_button.Name = "schedule_button";
             this.schedule_button.Size = new System.Drawing.Size(150, 50);
             this.schedule_button.TabIndex = 6;
@@ -131,11 +127,11 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.schedule_grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.schedule_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.schedule_grid.Location = new System.Drawing.Point(7, 346);
+            this.schedule_grid.Location = new System.Drawing.Point(7, 249);
             this.schedule_grid.Name = "schedule_grid";
             this.schedule_grid.RowHeadersWidth = 62;
             this.schedule_grid.RowTemplate.Height = 28;
-            this.schedule_grid.Size = new System.Drawing.Size(514, 290);
+            this.schedule_grid.Size = new System.Drawing.Size(514, 386);
             this.schedule_grid.TabIndex = 8;
             // 
             // weekday_box
@@ -149,7 +145,7 @@
             "Четверг",
             "Пятница",
             "Суббота"});
-            this.weekday_box.Location = new System.Drawing.Point(528, 412);
+            this.weekday_box.Location = new System.Drawing.Point(528, 279);
             this.weekday_box.Name = "weekday_box";
             this.weekday_box.Size = new System.Drawing.Size(150, 29);
             this.weekday_box.TabIndex = 9;
@@ -172,6 +168,7 @@
             this.name_textbox.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.name_textbox.Location = new System.Drawing.Point(307, 12);
             this.name_textbox.Name = "name_textbox";
+            this.name_textbox.ReadOnly = true;
             this.name_textbox.Size = new System.Drawing.Size(190, 32);
             this.name_textbox.TabIndex = 13;
             this.name_textbox.Text = "Имя";
@@ -183,6 +180,7 @@
             this.surname_textbox.Font = new System.Drawing.Font("Georgia", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.surname_textbox.Location = new System.Drawing.Point(307, 50);
             this.surname_textbox.Name = "surname_textbox";
+            this.surname_textbox.ReadOnly = true;
             this.surname_textbox.Size = new System.Drawing.Size(190, 32);
             this.surname_textbox.TabIndex = 14;
             this.surname_textbox.Text = "Фамилия";
@@ -210,8 +208,6 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel2.Controls.Add(this.schedule_label);
             this.splitContainer1.Panel2.Controls.Add(this.schedule_grid);
             this.splitContainer1.Panel2.Controls.Add(this.schedule_button);
@@ -221,31 +217,11 @@
             this.splitContainer1.SplitterDistance = 503;
             this.splitContainer1.TabIndex = 17;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(377, 211);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(296, 94);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(7, 211);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(360, 94);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            // 
             // schedule_label
             // 
             this.schedule_label.BackColor = System.Drawing.Color.SteelBlue;
             this.schedule_label.Font = new System.Drawing.Font("Georgia", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.schedule_label.Location = new System.Drawing.Point(7, 321);
+            this.schedule_label.Location = new System.Drawing.Point(7, 224);
             this.schedule_label.Name = "schedule_label";
             this.schedule_label.Size = new System.Drawing.Size(514, 25);
             this.schedule_label.TabIndex = 10;
@@ -394,8 +370,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.card_panel.ResumeLayout(false);
             this.card_panel.PerformLayout();
             this.panel.ResumeLayout(false);
@@ -426,8 +400,6 @@
         private System.Windows.Forms.Label schedule_label;
         private System.Windows.Forms.Panel card_panel;
         private System.Windows.Forms.ComboBox subject_combobox;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label sub_label;
         private System.Windows.Forms.Button note_button;
     }

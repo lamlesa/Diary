@@ -7,17 +7,21 @@ using System.Data;
 
 namespace Diary
 {
-    public partial class StudentInfoForm : Form
+    public partial class EditForm : Form
     {
-        public StudentInfoForm()
+        int ID {  get; set; }
+        DataGridViewRow Row { get; set; }
+        public EditForm(DataGridViewRow row)
         {
             InitializeComponent();
             var db = new DataBase();
+            ID = int.Parse(row.Cells[0].Value.ToString());
+            Row = row;
 
             db.OpenConnection();
 
-            var command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @login", db.GetConnection());
-            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = User.Login;
+            var command = new MySqlCommand("SELECT * FROM `users` WHERE `ID` = @u_id", db.GetConnection());
+            command.Parameters.Add("@u_id", MySqlDbType.VarChar).Value = ID;
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -48,16 +52,16 @@ namespace Diary
                     var db = new DataBase();
                     var table = new DataTable();
                     var adapter = new MySqlDataAdapter();
-                    var command = new MySqlCommand("UPDATE `users` SET `UPic` = @u_pic WHERE `users`.`Login` = @u_log", db.GetConnection());
+                    var command = new MySqlCommand("UPDATE `users` SET `UPic` = @u_pic WHERE `users`.`ID` = @u_id", db.GetConnection());
                     command.Parameters.Add("@u_pic", MySqlDbType.VarChar).Value = Path.GetFullPath(open_file_dialog.FileName);
-                    command.Parameters.Add("@u_log", MySqlDbType.VarChar).Value = User.Login;
+                    command.Parameters.Add("@u_id", MySqlDbType.VarChar).Value = ID;
                     db.OpenConnection();
                     try
                     {
                         if (command.ExecuteNonQuery() == 1)
                         {
-                            var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @u_login AND `Upic` = @u_pic", db.GetConnection());
-                            new_command.Parameters.Add("@u_login", MySqlDbType.VarChar).Value = User.Login;
+                            var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `ID` = @u_id AND `Upic` = @u_pic", db.GetConnection());
+                            new_command.Parameters.Add("@u_id", MySqlDbType.VarChar).Value = ID;
                             new_command.Parameters.Add("@u_pic", MySqlDbType.VarChar).Value = Path.GetFullPath(open_file_dialog.FileName);
                             adapter.SelectCommand = new_command;
 
@@ -90,17 +94,38 @@ namespace Diary
             }
         }
 
-        // если в конструктор формы передаём 1 - меняем логин, если 2 - пароль
+        // если в конструктор формы передаём 1 - меняем логин, если 2 - пароль, 3 - имя, 4 - фамилию, 5 - группу
         void ChangeLoginButtonClick(object sender, EventArgs e)
         {
-            var form = new ChangeInfoForm(1, User.Login);
+            var form = new ChangeInfoForm(1, Row.Cells[3].Value.ToString());
             form.Show();
             Hide();
         }
 
         void ChangePassButtonClick(object sender, EventArgs e)
         {
-            var form = new ChangeInfoForm(2, User.Login);
+            var form = new ChangeInfoForm(2, Row.Cells[3].Value.ToString());
+            form.Show();
+            Hide();
+        }
+
+        void ChangeNameButtonClick(object sender, EventArgs e)
+        {
+            var form = new ChangeInfoForm(3, Row.Cells[3].Value.ToString());
+            form.Show();
+            Hide();
+        }
+
+        void ChangeSurnameButtonClick(object sender, EventArgs e)
+        {
+            var form = new ChangeInfoForm(4, Row.Cells[3].Value.ToString());
+            form.Show();
+            Hide();
+        }
+
+        void ChangeGroupButtonClick(object sender, EventArgs e)
+        {
+            var form = new ChangeInfoForm(5, Row.Cells[3].Value.ToString());
             form.Show();
             Hide();
         }

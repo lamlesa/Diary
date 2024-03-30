@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Data;
 using System.Windows.Forms;
 
 namespace Diary
@@ -15,10 +16,11 @@ namespace Diary
             var command = new MySqlCommand("SELECT * FROM `users` WHERE `Login` = @login", db.GetConnection());
             command.Parameters.Add("@login", MySqlDbType.VarChar).Value = User.Login;
             var reader = command.ExecuteReader();
+
             if (reader.Read())
             {
-                //name_textbox.Text = reader.GetString("Name");
-                //surname_textbox.Text = reader.GetString("Surname");
+                name_textbox.Text = reader.GetString("Name");
+                surname_textbox.Text = reader.GetString("Surname");
             }
             else
             {
@@ -28,64 +30,96 @@ namespace Diary
             db.CloseConnection();
         }
 
-
-
-        private void textBoxGroupName_TextChanged(object sender, System.EventArgs e)
+        void ShowStudents(object sender, System.EventArgs e)
         {
-            string groupName = textBoxGroupName.Text;
-        }
+            var db = new DataBase();
+            var table = new DataTable();
+            var adapter = new MySqlDataAdapter();
+            var command = new MySqlCommand("SELECT `ID`,`Name`,`Surname`,`Login` FROM `users` WHERE `Group` = @group", db.GetConnection());
+            command.Parameters.Add("@group", MySqlDbType.VarChar).Value = (string)group_box.SelectedItem;
+            adapter.SelectCommand = command;
 
-        private void button_AddStudent_Click(object sender, System.EventArgs e)
-        {
-            // Добавление нового студента в DataGridView
-            dataGridViewStudents.Rows.Add("Имя", "Фамилия", "Номер билета");
-
-            // Дополнительная логика для сохранения информации о новом студенте
-            // Например, можно добавить код для сохранения данных о студенте в базу данных
-
-        }
-
-        private void dataGridViewStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridViewStudents.SelectedRows.Count > 0)
+            try
             {
-                DataGridViewRow selectedRow = dataGridViewStudents.SelectedRows[0];
-                string selectedStudentName = selectedRow.Cells["Имя"].Value.ToString();
-                string selectedStudentSurname = selectedRow.Cells["Фамилия"].Value.ToString();
+                adapter.Fill(table);
             }
+            catch
+            {
+                MessageBox.Show("Необходимо выбрать группу из списка.");
+            }
+            datagrid_students.DataSource = table;
         }
 
-        private void buttonCreateGroup_Click_Click(object sender, System.EventArgs e)
+        void CreateGroup(object sender, System.EventArgs e)
         {
-            // Получение названия группы из TextBox
-            string groupName = textBoxGroupName.Text;
+            var form = new GroupCreator();
+            form.Show();
+        }
 
-            // Проверка наличия введенного названия группы
-            if (!string.IsNullOrEmpty(groupName))
+        void Edit(object sender, System.EventArgs e)
+        {
+            if (datagrid_students.CurrentRow == null)
             {
-                // Добавление кода для создания новой группы
-                // Например, можно сохранить данные о новой группе в базу данных 
-                MessageBox.Show("Группа '" + groupName + "' успешно создана!");
+                MessageBox.Show("Сначала выберите студента.");
             }
             else
             {
-                MessageBox.Show("Пожалуйста, введите название группы.");
-            }
+                var form = new EditForm(datagrid_students.CurrentRow);
+                form.Show();
+            }   
         }
 
-        private void buttonEdit_Click_Click(object sender, System.EventArgs e)
+        void AddStudentClick(object sender, System.EventArgs e)
         {
-
+            var form = new AddStudentForm();
+            form.Show();
         }
 
-        private void buttonDeleteStudent_Click_Click(object sender, System.EventArgs e)
+        void DeleteStudent(object sender, System.EventArgs e)
         {
             // Удаление выбранного студента из DataGridView
-            if (dataGridViewStudents.SelectedRows.Count > 0)
+
+            if (datagrid_students.SelectedRows.Count > 0)
             {
-                dataGridViewStudents.Rows.Remove(dataGridViewStudents.SelectedRows[0]);
-                // Дополнительная логика для удаления информации о студенте
-                // Например, можно добавить код для удаления данных о студенте из базы данных
+                var id = int.Parse(datagrid_students.CurrentRow.Cells[0].Value.ToString());
+                datagrid_students.Rows.Remove(datagrid_students.SelectedRows[0]);
+                var db = new DataBase();
+                var table = new DataTable();
+                var adapter = new MySqlDataAdapter();
+                var command = new MySqlCommand("DELETE FROM users WHERE `users`.`ID` = @u_ID", db.GetConnection());
+                command.Parameters.Add("@u_ID", MySqlDbType.Int32).Value = id;
+
+                db.OpenConnection();
+
+                try
+                {
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        var new_command = new MySqlCommand("SELECT * FROM `users` WHERE `ID` = @u_ID", db.GetConnection());
+                        new_command.Parameters.Add("@u_ID", MySqlDbType.Int32).Value = id;
+                        adapter.SelectCommand = new_command;
+
+                        try
+                        {
+                            adapter.Fill(table);
+                            MessageBox.Show("Студент успешно удалён.");
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Такого студента не существует.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не удалось удалить студента.");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось удалить студента.");
+                }
+
+                db.CloseConnection();
             }
             else
             {
@@ -93,24 +127,16 @@ namespace Diary
             }
         }
 
-        private void AdminForm_Load(object sender, System.EventArgs e)
+        void ShowScheduleForm(object sender, System.EventArgs e)
         {
-
-        }
-
-        private void raspisanie_button_Click(object sender, System.EventArgs e)
-        {
-            this.Hide();
-            RaspisanieForm raspisanieForm = new RaspisanieForm();
+            ScheduleForm raspisanieForm = new ScheduleForm();
             raspisanieForm.Show();
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        void ShowMarksForm(object sender, System.EventArgs e)
         {
-            this.Hide();
-            BallsForm ballsForm = new BallsForm();
+            Marks ballsForm = new Marks();
             ballsForm.Show();
         }
-
     }
 }
